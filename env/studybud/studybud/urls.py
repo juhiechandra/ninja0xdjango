@@ -13,18 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from email.mime import base
 from django.contrib import admin
-from django.urls import path
-from django.http import HttpResponse
+from django.urls import path, include
+# from django.http import HttpResponse 
 
-def home(request):
-    return HttpResponse('Home Page')
+# def home(request):
+#     return HttpResponse('Home Page')
 
-def room(room):
-    return HttpResponse('Room')
+# def room(room):
+#     return HttpResponse('Room')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',home),
-    path('room/',room),
+    path('', include('base.urls') ),
+    # path('',home),
+    # path('room/',room),
 ]
